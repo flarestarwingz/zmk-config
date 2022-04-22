@@ -47,8 +47,8 @@
 
 
 
-#define COLEMAK 0
-#define QWERTY  1
+#define QWERTY 0
+#define QWERTY2  1
 #define GAME    2
 #define GRSE    3 // A special raise layer for main-half gaming.
 #define LOWER   4
@@ -79,19 +79,19 @@
 
 		default_layer {
 // ---------------------------------------------------------------------------------------------------------------------------------
-// |  ESC  |  Q   |  W   |  F   |  P   |  B   |                                       |   J   |   L   |   U   |   Y   |   :   |   \   |
-// |  CTRL |  A   |  R   |  S   |  T   |  G   |                                       |   M   |   N   |   E   |   I   |   O   |   '   |
-// | SHIFT |  Z   |  X   |  C   |  D   |  V   | GAMG  | QWTY |         | DFLT | _____ |   K   |   H   |   ,   |   .   |   /   | TAB   |
+// |  TAB  |  Q   |  W   |  E   |  R   |  T   |                                       |   Y   |   U   |   I   |   O   |   P   |   ENC   |
+// |  CTRL |  A   |  S   |  D   |  F   |  G   |                                       |   H   |   J   |   K   |   L   |   ;   |   '   |
+// | SHIFT |  Z   |  X   |  C   |  V   |  B   |       |      |         |      | _____ |   N   |   M   |   ,   |   .   |   /   | ESC   |
 //                       | GUI  | ALT  | RSE  | SPACE | RET  |         | BSPC | SPACE |  LWR  | R-ALT |  GUI  |
 //                                                                              /NAV
 			bindings = <
-	&kp ESC   &kp Q &kp W &kp F &kp P &kp B                                                      &kp J     &kp L    &kp U     &kp Y   &kp SEMI &kp BSLH
-	&kp LCTRL &kp A &kp R &kp S &kp T &kp G                                                      &kp M     &kp N    &kp E     &kp I   &kp O    &kp SQT
-	&kp LSHFT &kp Z &kp X &kp C &kp D &kp V     &tog GAME &tog QWERTY    &to 0     &trans        &kp K     &kp H    &kp COMMA &kp DOT &kp FSLH &kp TAB
+	&kp TAB   &kp Q &kp W &kp E &kp R &kp T                                                      &kp Y     &kp U    &kp I     &kp O   &kp P    &inc_dec_kp
+	&kp LCTRL &kp A &kp S &kp D &kp F &kp G                                                      &kp H     &kp J    &kp K     &kp L   &kp SEMI    &kp SQT
+	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B       			               &trans        &kp N     &kp M    &kp COMMA &kp DOT &kp FSLH &kp ESC
 	                &kp LGUI &kp LALT &mo RAISE &kp SPACE &kp RET        &kp BSPC  &lt NAV SPACE &mo LOWER &kp RALT &kp RGUI
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 
 		qwerty_layer {
@@ -108,7 +108,7 @@
 	                    &trans &trans &trans &trans &trans       &trans &trans &trans &trans &trans
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 
 		gaming_layer {
@@ -125,7 +125,7 @@
 	                     &kp LALT &kp TAB &mo GRSE &trans &trans       &trans &trans &trans &trans &trans
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 		
 		gaming_raise_layer {
@@ -142,7 +142,7 @@
 	                     &trans &trans &trans &trans &trans       &trans &trans &trans &trans &trans
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 		
 
@@ -159,7 +159,7 @@
 	                          &trans       &trans     &trans     &trans &trans       &trans  &trans &trans   &trans &trans
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 	
 		raise_layer {
@@ -175,7 +175,7 @@
 	                            &trans   &trans   &trans    &trans &trans       &kp DEL &trans &trans     &trans       &trans
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 
 		nav_layer {
@@ -191,7 +191,7 @@
 	                     &trans &trans &trans &trans &trans       &trans &trans  &trans    &trans    &trans
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 
 		adjust_layer {
@@ -207,7 +207,7 @@
                                            &trans            &trans          &trans          &trans &trans       &trans              &trans     &trans     &trans &trans
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 	};
 };
