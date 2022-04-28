@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: infused-kim
-      revision: infused-kim
+      revision: sofle
       import: app/west.yml
   self:
     path: config
