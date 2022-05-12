@@ -11,33 +11,8 @@
 
 // LAYER DEFINITIONS //
 #define BASE   0
-#define BUTTON 1
-#define NAV    2
-#define MOUSE  3
-#define MEDIA  4
-#define NUM    5
-#define SYM    6
-#define FUN    7
-
-// CUSTOM KEY DEFINITIONS //
-#define U_RDO &kp LC(Y) // WINDOWS redo
-#define U_PST &kp LC(V) // WINDOWS paste
-#define U_CPY &kp LC(C) // WINDOWS copy
-#define U_CUT &kp LC(X) // WINDOWS cut
-#define U_UND &kp LC(Z) // WINDOWS undo
-#define U_SCRNSHT &kp LG(LS(S)) // WINDOWS screenshot
-
-#define U_BTN1 &kp KP_N5
-#define U_BTN2 &none
-#define U_BTN3 &none
-#define U_MS_D &kp KP_N2
-#define U_MS_L &kp KP_N4
-#define U_MS_R &kp KP_N6
-#define U_MS_U &kp KP_N8
-#define U_WH_D &none
-#define U_WH_L &none
-#define U_WH_R &none
-#define U_WH_U &none
+#define LOWER 1
+#define RAISE 2
 
 // HOME ROW MOD CUSTOMIZATIONS //
 #define U_TAPPING_TERM 200
@@ -62,88 +37,60 @@
             
             //                                                  BASE LAYER
             // ╭──────────────────────────────────────────╮                         ╭──────────────────────────────────────────╮
-            // │ NONE  Q         W      E       R       T │                         │ Y  U       I       O      P         <enc>│
-            // │ NONE  A|WIN     S|ALT  D|CTRL  F|SHFT  G ╰───────────╮ ╭───────────╯ H  J|SHFT  K|CTRL  L|ALT  ;|WIN     '    │
-            // │ NONE  Z|BUTTON  X|ALT  C       V       B   ESC  DEL  │ │ NONE  NONE  N  M       ,       .|ALT  /|BUTTON  `    │
-            // ╰───────────╮   COPY  PASTE|FUN  UNDO|NUM  SPACE  BSPC │ │ NONE  TAB|MOUSE  SPC|NAV  ESC|MEDIA  NONE ╭──────────╯
+            // │ TAB    Q    W      E       R       T     │                         │ Y     U    I       O      P         [    │
+            // │ SHIFT  A    S      D       F       G     ╰───────────╮ ╭───────────╯ H     J    K       L      ;         '    │
+            // │ LCTRL  Z    X      C       V       B      BSPC  DEL  │ │ NONE  NONE  N     M    ,       .      /         [    │
+            // ╰───────────╮           LGUI    LALT  lower   C    V   │ │ SPACE ENTER       N    M      raise       ╭──────────╯
             //             ╰──────────────────────────────────────────╯ ╰───────────────────────────────────────────╯            
             //
 
 			bindings = <
-                &none  &kp Q             &kp W              &kp E              &kp R              &kp T                                                                &kp Y		   &kp U               &kp I               &kp O               &kp P            &none
-                &none  &hm LGUI A        &hm LALT S         &hm LCTRL D        &hm LSHFT F        &kp G                                                                &kp H               &hm LSHFT J         &hm LCTRL K         &hm LALT L          &kp SEMI         &kp APOS
-                &none  &lt BUTTON Z      &hm RALT X         &kp C              &kp V              &kp B         &kp ESC     &kp DEL              &none         &none   &kp N               &kp M               &kp COMMA           &hm RALT DOT        &lt BUTTON SLASH &kp GRAVE
-                                                &kp K_COPY          &lt FUN K_PASTE       &lt NUM K_UNDO        &kp SPACE   &kp BSPC             &lt SYM RET   &lt MOUSE TAB               &lt NAV SPC         &lt MEDIA ESC       &kp LGUI
+                &kp TAB         &kp Q      &kp W         &kp E        &kp R        &kp T                                                                &kp Y	  &kp U        &kp I           &kp O      &kp P        &kp LBKT
+                &kp LEFT_SHIFT  &kp A      &kp S         &kp D        &kp F        &kp G                                                                &kp H     &kp J        &kp K           &kp L      &kp SEMI     &kp APOS
+                &kp LCTRL       &kp Z      &kp X         &kp C        &kp V        &kp B         &kp BSPC   &kp DEL           &none       &none         &kp N     &kp M       &kp COMMA        &kp DOT    &kp SLASH    &kp LBKT
+                                                &kp LGUI         &kp LALT        &tog LOWER      &kp C      &kp V             &kp SPACE   &kp ENTER           &kp N     &kp M         &tog RAISE    
 			>;
 			
 		};
 
-        BUTTON_layer {                                       
-              label = "Button"; //MIRYOKU_ALTERNATIVES_BUTTON                                      
-            bindings = <                                       
-                &none  U_UND             U_CUT              U_CPY              U_PST              U_RDO                                                          U_RDO               U_PST               U_CPY               U_CUT               U_UND             &none
-                &none  &kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none                                                          &none               &kp LSHFT           &kp LCTRL           &kp LALT            &kp LGUI          &none
-                &none  &none             U_CUT              U_CPY              U_PST              U_RDO         &none        &none     &none      &none          U_RDO               U_PST               U_CPY               U_CUT               &none             &none
-                                                            &none              U_BTN2             U_BTN3        U_BTN1       &none     &none      U_BTN1         U_BTN3              U_BTN2              &none
-            >;        
-        };  
-        NAV_layer {  
-            label = "Nav";  //MIRYOKU_ALTERNATIVES_NAV_INVERTEDT_FLIP
-            bindings = <  
-                &none  &kp PG_UP         &kp HOME           &kp UP             &kp END            &kp INS                                                        &none               &none               &none               &none               &none            &none
-                &none  &kp PG_DN         &kp LEFT           &kp DOWN           &kp RIGHT          &kp CAPS                                                       &none               &kp LSHFT           &kp LCTRL           &kp LALT            &kp LGUI         &none
-                &none  U_UND             U_CUT              U_CPY              U_PST              U_RDO         &none        &none     &none      &none          &none               &none               &none               &kp RALT            &none            &none
-                                                            &none              &kp DEL            &kp BSPC      &kp RET      &none     &none      &none          &none               &none               &none   
-            >;      
-        };      
-        MOUSE_layer {      
-            label = "Mouse"; //MIRYOKU_ALTERNATIVES_MOUSE_INVERTEDT_FLIP     
-            bindings = <       
-                &none  U_WH_U            U_WH_L             U_MS_U             U_WH_R             &none                                                          &none               &none               &none               &none               &none            &none   
-                &none  U_WH_D            U_MS_L             U_MS_D             U_MS_R             &none                                                          &none               &kp LSHFT           &kp LCTRL           &kp LALT            &kp LGUI         &none   
-                &none  U_UND             U_CUT              U_CPY              U_PST              U_RDO         &none        &none     &none      &none          &none               &none               &none               &kp RALT            &none            &none   
-                                                            &none              U_BTN2             U_BTN3        U_BTN1       &none     &none      &none          &none               &none               &none
-            >;      
-        };      
-        MEDIA_layer {      
-            label = "Media"; //MIRYOKU_ALTERNATIVES_MEDIA_INVERTEDT_FLIP     
-            bindings = <       
-                &none  &none             &none              &none              &none              &bt BT_CLR                                                     &none               &none               &none               &none               &bootloader      &none   
-                &none  &none             &none              &none              &none              &none                                                          &none               &kp LSHFT           &kp LCTRL           &kp LALT            &kp LGUI         &none   
-                &none  &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &bt BT_SEL 4  &none       &none      &none      &none          &none               &none               &none               &kp RALT            &none            &none   
-                                                            &none              U_BTN2             U_BTN3        U_BTN1      &none      &none      &none          &none               &none               &none 
-            >;      
-        };      
-        NUM_layer {      
-            label = "Num";  //MIRYOKU_ALTERNATIVES_NUM_FLIP    
-            bindings = <      
-                &none  &none             &none              &none              &none              &none                                                          &kp LBKT            &kp NUM_7           &kp NUM_8           &kp NUM_9           &kp RBKT         &none   
-                &none  &kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none                                                          &kp EQL             &kp NUM_4           &kp NUM_5           &kp NUM_6           &kp SEMI         &none   
-                &none  &none             &kp RALT           &none              &none              &none          &none       &none    &none     &none            &kp BSLH            &kp NUM_1           &kp NUM_2           &kp NUM_3           &kp GRAVE        &none   
-                                                            &none              &none              &none          &none       &none    &kp MINUS &none            &kp NUM_0           &kp DOT             &none  
-              
-              
-            >;     
-        };     
-        SYM_layer {     
-            label = "Sym";  //MIRYOKU_ALTERNATIVES_SYM_FLIP   
-            bindings = <      
-                &none  &none             &none              &none              &none              &none                                                          &kp LBRC            &kp AMPS            &kp ASTRK           &kp LPAR            &kp RBRC         &none   
-                &none  &kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none                                                          &kp PLUS            &kp DLLR            &kp PRCT            &kp CRRT            &kp COLON        &none   
-                &none  &none             &kp RALT           &none              &none              &none          &none       &none    &none     &none            &kp PIPE            &kp EXCL            &kp AT              &kp HASH            &kp TILDE        &none   
-                                                            &none              &none              &none          &none       &none    &kp UNDER &none            &kp LPAR            &kp RPAR            &none   
-            >;     
-        };     
-        FUN_layer {     
-            label = "Fun"; //MIRYOKU_ALTERNATIVES_FUN_FLIP    
-            bindings = <      
-                &none  &none             &none              &none              &none              &none                                                          &kp PSCRN           &kp F7              &kp F8              &kp F9              &kp F12          &none   
-                &none  &kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none                                                          &kp SLCK            &kp F4              &kp F5              &kp F6              &kp F11          &none   
-                &none  &none             &kp RALT           &none              &none              &none          &none       &none    &none     &none            &kp PAUSE_BREAK     &kp F1              &kp F2              &kp F3              &kp F10          &none   
-                                                            &none              &none              &none          &none       &none    &kp TAB   &none            &kp SPC             &kp K_APP           &none
-            >;
-        };
-    };
+        LOWER_layer {                                       
+              label = "Lower";                                     
+             
+            //                                                  LOWER LAYER
+            // ╭──────────────────────────────────────────╮                         ╭──────────────────────────────────────────╮
+            // │   1    2    3      4       5       6     │                         │ 7     8    9       0      -         =    │
+            // │ SHIFT  A    S      D       F       G     ╰───────────╮ ╭───────────╯ H     J    K       L      ;         '    │
+            // │ LCTRL  Z    X      C       V       B      BSPC  DEL  │ │ NONE  NONE  N     M    ,       .      /         =    │
+            // ╰───────────╮           LGUI    LALT  lower   C    V   │ │ SPACE ENTER       N    M      raise       ╭──────────╯
+            //             ╰──────────────────────────────────────────╯ ╰───────────────────────────────────────────╯            
+            //
+
+			bindings = <
+                &kp N1          &kp N2      &kp N3         &kp N4        &kp N5                                                                &kp N6	  &kp N7        &kp N8           &kp N9      &kp N0        &kp MINUS &kp PLUS
+                &kp LEFT_SHIFT  &kp A      &kp S         &kp D        &kp F        &kp G                                                                &kp H     &kp J        &kp K           &kp L      &kp SEMI     &kp APOS
+                &kp LCTRL       &kp Z      &kp X         &kp C        &kp V        &kp B         &kp BSPC   &kp DEL           &none       &none         &kp N     &kp M       &kp COMMA        &kp DOT    &kp SLASH    &kp PLUS
+                                                &kp LGUI         &kp LALT        &tog LOWER      &kp C      &kp V             &kp SPACE   &kp ENTER           &kp N     &kp M         &tog RAISE    
+			>;
+       		};
 
 
+        RAISE_layer {                                       
+              label = "Raise";                                     
+             
+            //                                                  RAISE LAYER
+            // ╭──────────────────────────────────────────╮                         ╭──────────────────────────────────────────╮
+            // │ F1    F2    F3     F4      F5      F6    │                         │ F7   F8    F9    F10     F11       F12   │
+            // │ SHIFT  A    S      D       F       G     ╰───────────╮ ╭───────────╯ H     J    K       L      ;         '    │
+            // │ LCTRL  Z    X      C       V       B      BSPC  DEL  │ │ NONE  NONE  N     M    ,       .      /         F12  │
+            // ╰───────────╮           LGUI    LALT  lower   C    V   │ │ SPACE ENTER       N    M      raise       ╭──────────╯
+            //             ╰──────────────────────────────────────────╯ ╰───────────────────────────────────────────╯            
+            //
+
+			bindings = <
+                &kp F1         &kp F2      &kp F3         &kp F4        &kp F5        &kp F6                                                                &kp F7	  &kp F8        &kp F9           &kp F10      &kp F11        &kp F12
+                &kp LEFT_SHIFT  &kp A      &kp S         &kp D        &kp F        &kp G                                                                &kp H     &kp J        &kp K           &kp L      &kp SEMI     &kp APOS
+                &kp LCTRL       &kp Z      &kp X         &kp C        &kp V        &kp B         &kp BSPC   &kp DEL           &none       &none         &kp N     &kp M       &kp COMMA        &kp DOT    &kp SLASH    &kp F12
+                                                &kp LGUI         &kp LALT        &tog LOWER      &kp C      &kp V             &kp SPACE   &kp ENTER           &kp N     &kp M         &tog RAISE    
+			>;
+       		};
 };
