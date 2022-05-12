@@ -14,10 +14,10 @@
 #define LOWER 1
 #define RAISE 2
 
-	keymap {
-		compatible = "zmk,keymap";
+keymap {
+	compatible = "zmk,keymap";
 
-		default_layer {
+	default_layer {
             
             //                                                  BASE LAYER
             // ╭──────────────────────────────────────────╮                         ╭──────────────────────────────────────────╮
