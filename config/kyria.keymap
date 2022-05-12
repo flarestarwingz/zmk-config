@@ -88,10 +88,10 @@
             //
 
 			bindings = <
-                &kp F1         &kp F2      &kp F3         &kp F4        &kp F5        &kp F6                                                                &kp F7	  &kp F8        &kp F9           &kp F10      &kp F11        &kp F12
+                &kp F1          &kp F2     &kp F3        &kp F4       &kp F5       &kp F6                                                               &kp F7	  &kp F8       &kp F9          &kp F10    &kp F11      &kp F12
                 &kp LEFT_SHIFT  &kp A      &kp S         &kp D        &kp F        &kp G                                                                &kp H     &kp J        &kp K           &kp L      &kp SEMI     &kp APOS
-                &kp LCTRL       &kp Z      &kp X         &kp C        &kp V        &kp B         &bt BT_CLR   &bt BT_CLR           &none       &none         &kp N     &kp M       &kp COMMA        &kp DOT    &kp SLASH    &kp F12
-                                                &bt BT_SEL 1         &bt BT_SEL 2        &bt BT_SEL 3      &kp &bt BT_SEL 4      &kp &bt BT_SEL 5             &kp SPACE   &kp ENTER           &kp N     &kp M         &tog RAISE    
+                &kp LCTRL       &kp Z      &kp X         &kp C        &kp V        &kp B           &bt BT_CLR   &bt BT_CLR                &none       &none         &kp N     &kp M       &kp COMMA        &kp DOT    &kp SLASH    &kp F12
+                                                &bt BT_SEL 1     &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4 &bt BT_SEL 5             &kp SPACE   &kp ENTER           &kp N     &kp M         &tog RAISE    
 			>;
        		};
         };
